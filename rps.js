@@ -15,10 +15,16 @@ function playRound(){
     console.log(machine);
     console.log(player);
     if(machine == player){
-        console.log(`ELTALALTAD, ${machine} volt a gep valasztasa is`);
+        console.log(`Senki sem nyert!`);
 
-    } else {
-        console.log("Nem találtad el!")
+    }else if((player == "rock") && (machine == "sciccors")){
+        console.log("Gratulalok nyertel!");
+    }else if((player == "paper") && (machine == "rock")){
+        console.log("Gratulalok nyertel!");
+    }else if((player == "sciccors") && (machine == "paper")){
+        console.log("Gratulalok nyertel!");
+    }else {
+        console.log("Vesztettel!");
     }
 
 }
