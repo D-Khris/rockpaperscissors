@@ -6,7 +6,7 @@ function getComputerChoise(){
 
 function getPlayerSelection(){
     let jatekosValaszt = prompt("Add meg a tippedet (rock, paper vagy sciccors:)");
-    return jatekosValaszt;
+    return jatekosValaszt.toLowerCase();
 }
 
 function playRound(){
@@ -14,6 +14,12 @@ function playRound(){
     let player = getPlayerSelection();
     console.log(machine);
     console.log(player);
+    if(machine == player){
+        console.log(`ELTALALTAD, ${machine} volt a gep valasztasa is`);
+
+    } else {
+        console.log("Nem találtad el!")
+    }
 
 }
 
