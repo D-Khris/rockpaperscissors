@@ -1,10 +1,10 @@
-function getComputerChoise(){
-    let tomb = ["rock","paper","sciccors"];
+function getComputerChoise() {
+    let tomb = ["rock", "paper", "sciccors"];
     let valaszt = tomb[Math.floor(Math.random() * 3)];
     return valaszt;
 }
 
-function getPlayerSelection(){
+function getPlayerSelection() {
     let jatekosValaszt = prompt("Add meg a tippedet (rock, paper vagy sciccors:)");
     return jatekosValaszt.toLowerCase();
 }
@@ -34,23 +34,23 @@ function playRound(){
     return allas;
 }
 
-function game(){
-let jatekospont = 0;
-let gepipont = 0;
-let allasnagy = [0,0];
-for(let i=0; i<5; i++){
-    allasnagy = playRound();
-    jatekospont = jatekospont + allasnagy[0];
-    gepipont = gepipont + allasnagy[1];
-    console.log(`Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`);
-}
-if(jatekospont>gepipont){
-    console.log("GRATULÁKOK!!!!")
-} else if(gepipont>jatekospont) {
-    console.log("VESZTETTEL :((((")
-} else {
-    console.log("DÖNTETTLEN!!!!!")
-}
+function game() {
+    let jatekospont = 0;
+    let gepipont = 0;
+    let allasnagy = [0, 0];
+    for (let i = 0; i < 5; i++) {
+        allasnagy = playRound();
+        jatekospont = jatekospont + allasnagy[0];
+        gepipont = gepipont + allasnagy[1];
+        console.log(`Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`);
+    }
+    if (jatekospont > gepipont) {
+        console.log("GRATULÁKOK!!!!")
+    } else if (gepipont > jatekospont) {
+        console.log("VESZTETTEL :((((")
+    } else {
+        console.log("DÖNTETTLEN!!!!!")
+    }
 }
 
 game();
