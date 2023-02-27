@@ -14,8 +14,6 @@ function playRound(valasztas){
     let player = valasztas;
     let allas = [0,0]
     const eredmenyTabla = document.querySelector('.eredmeny');
-    console.log(machine);
-    console.log(player);
     if(machine == player){
         eredmenyTabla.textContent = `Senki sem nyert! Te tipped: ${player} : Gép tippje: ${machine}`;
 
@@ -39,15 +37,29 @@ function game() {
     let jatekospont = 0;
     let gepipont = 0;
     let allasnagy = [0, 0];
-    document.querySelector('.ko').addEventListener('click', () => {
-        allasnagy = playRound("rock");
-    })
-    document.querySelector('.papir').addEventListener('click', () => {
-        allasnagy = playRound("paper");
-    })
-    document.querySelector('.ollo').addEventListener('click', () => {
-        allasnagy = playRound("sciccors");
-    })
+    const vegeredmeny = document.querySelector('.vegeredmeny');
+
+for (let i = 0; i < 5; i++){
+
+   allasnagy = document.querySelector('.ko').addEventListener('click', () => {
+    let allasnagy = playRound("rock");
+    return allasnagy;
+    });
+   allasnagy = document.querySelector('.papir').addEventListener('click', () => playRound("paper"));
+   allasnagy = document.querySelector('.ollo').addEventListener('click', () => playRound("sciccors"));
+    
+    console.log(allasnagy);
+    jatekospont = jatekospont + allasnagy[0];
+    gepipont = gepipont + allasnagy[1];
+    document.querySelector('.reszeredmeny').textContent = `Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`;
+}
+if (jatekospont > gepipont) {
+    vegeredmeny.textContent = "GRATULÁKOK!!!!";
+} else if (gepipont > jatekospont) {
+    vegeredmeny.textContent = "VESZTETTEL :((((";
+} else {
+    vegeredmeny.textContent = "DÖNTETTLEN!!!!!";
+}
  /*   for (let i = 0; i < 5; i++) {
         allasnagy = playRound();
         jatekospont = jatekospont + allasnagy[0];
