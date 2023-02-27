@@ -4,31 +4,32 @@ function getComputerChoise() {
     return valaszt;
 }
 
-function getPlayerSelection() {
+/* function getPlayerSelection() {
     let jatekosValaszt = prompt("Add meg a tippedet (rock, paper vagy sciccors:)");
     return jatekosValaszt.toLowerCase();
-}
+} */
 
 function playRound(valasztas){
     let machine = getComputerChoise();
     let player = valasztas;
     let allas = [0,0]
+    const eredmenyTabla = document.querySelector('.eredmeny');
     console.log(machine);
     console.log(player);
     if(machine == player){
-        console.log(`Senki sem nyert!`);
+        eredmenyTabla.textContent = `Senki sem nyert! Te tipped: ${player} : Gép tippje: ${machine}`;
 
     }else if((player == "rock") && (machine == "sciccors")){
-        console.log("Gratulalok nyertel!");
+        eredmenyTabla.textContent = `Gratulalok nyertel! Te tipped: ${player} : Gép tippje: ${machine}`;
         allas[0]++;
     }else if((player == "paper") && (machine == "rock")){
-        console.log("Gratulalok nyertel!");
+        eredmenyTabla.textContent = `Gratulalok nyertel! Te tipped: ${player} : Gép tippje: ${machine}`;
         allas[0]++;
     }else if((player == "sciccors") && (machine == "paper")){
-        console.log("Gratulalok nyertel!");
+        eredmenyTabla.textContent = `Gratulalok nyertel! Te tipped: ${player} : Gép tippje: ${machine}`;
         allas[0]++;
     }else {
-        console.log("Vesztettel!");
+        eredmenyTabla.textContent = `Vesztettel! Te tipped: ${player} : Gép tippje: ${machine}`;
         allas[1]++;
     }
     return allas;
