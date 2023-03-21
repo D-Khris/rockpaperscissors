@@ -1,13 +1,11 @@
+let allasnagy = [0,0];
+
 function getComputerChoise() {
     let tomb = ["rock", "paper", "sciccors"];
     let valaszt = tomb[Math.floor(Math.random() * 3)];
     return valaszt;
 }
 
-/* function getPlayerSelection() {
-    let jatekosValaszt = prompt("Add meg a tippedet (rock, paper vagy sciccors:)");
-    return jatekosValaszt.toLowerCase();
-} */
 
 function playRound(valasztas){
     let machine = getComputerChoise();
@@ -30,49 +28,88 @@ function playRound(valasztas){
         eredmenyTabla.textContent = `Vesztettel! Te tipped: ${player} : Gép tippje: ${machine}`;
         allas[1]++;
     }
+    console.log(`A playRound fv-ben lévő érték: ${allas}`)
     return allas;
 }
 
+function endGame() {
+    console.log("Vége a játéknak");
+    document.querySelector('.ko').style.visibility = 'hidden';
+    document.querySelector('.papir').style.visibility = 'hidden';
+    document.querySelector('.ollo').style.visibility = 'hidden';
+}
+
 function game() {
+        
+    let allasnagy2 = [];
     let jatekospont = 0;
     let gepipont = 0;
-    let allasnagy = [0, 0];
     const vegeredmeny = document.querySelector('.vegeredmeny');
 
-for (let i = 0; i < 5; i++){
+    document.querySelector('.ko').addEventListener('click', () => {
+        allasnagy2 = playRound('rock');
+        console.log(`Kint: ${allasnagy2}`);
+        console.log(`Eseménykezelő: ${allasnagy2}`);
+        console.log(typeof (allasnagy2));
+        jatekospont = jatekospont + allasnagy2[0];
+        gepipont = gepipont + allasnagy2[1];
+        document.querySelector('.reszeredmeny').textContent = `Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`;
 
-   allasnagy = document.querySelector('.ko').addEventListener('click', () => {
-    let allasnagy = playRound("rock");
-    return allasnagy;
+        if ((jatekospont > gepipont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "GRATULÁKOK!!!!";
+            endGame();
+        } else if ((gepipont > jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "VESZTETTEL :((((";
+            endGame();
+        } else if ((gepipont == jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "DÖNTETTLEN!!!!!";
+            endGame();
+        }
     });
-   allasnagy = document.querySelector('.papir').addEventListener('click', () => playRound("paper"));
-   allasnagy = document.querySelector('.ollo').addEventListener('click', () => playRound("sciccors"));
+
+    document.querySelector('.papir').addEventListener('click', () => {
+        allasnagy2 = playRound('paper');
+        console.log(`Kint: ${allasnagy2}`);
+        console.log(`Eseménykezelő: ${allasnagy2}`);
+        console.log(typeof (allasnagy2));
+        jatekospont = jatekospont + allasnagy2[0];
+        gepipont = gepipont + allasnagy2[1];
+        document.querySelector('.reszeredmeny').textContent = `Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`;
     
-    console.log(allasnagy);
-    jatekospont = jatekospont + allasnagy[0];
-    gepipont = gepipont + allasnagy[1];
-    document.querySelector('.reszeredmeny').textContent = `Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`;
-}
-if (jatekospont > gepipont) {
-    vegeredmeny.textContent = "GRATULÁKOK!!!!";
-} else if (gepipont > jatekospont) {
-    vegeredmeny.textContent = "VESZTETTEL :((((";
-} else {
-    vegeredmeny.textContent = "DÖNTETTLEN!!!!!";
-}
- /*   for (let i = 0; i < 5; i++) {
-        allasnagy = playRound();
-        jatekospont = jatekospont + allasnagy[0];
-        gepipont = gepipont + allasnagy[1];
-        console.log(`Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`);
-    }
-    if (jatekospont > gepipont) {
-        console.log("GRATULÁKOK!!!!")
-    } else if (gepipont > jatekospont) {
-        console.log("VESZTETTEL :((((")
-    } else {
-        console.log("DÖNTETTLEN!!!!!")
-    } */
+        if ((jatekospont > gepipont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "GRATULÁKOK!!!!";
+            endGame();
+        } else if ((gepipont > jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "VESZTETTEL :((((";
+            endGame();
+        } else if ((gepipont == jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "DÖNTETTLEN!!!!!";
+            endGame();
+        }
+    });
+
+    document.querySelector('.ollo').addEventListener('click', () => {
+        allasnagy2 = playRound('sciccors');
+        console.log(`Kint: ${allasnagy2}`);
+        console.log(`Eseménykezelő: ${allasnagy2}`);
+        console.log(typeof (allasnagy2));
+        jatekospont = jatekospont + allasnagy2[0];
+        gepipont = gepipont + allasnagy2[1];
+        document.querySelector('.reszeredmeny').textContent = `Eredmeny állása --> Játékos:${jatekospont} : Gép:${gepipont}`;
+    
+        if ((jatekospont > gepipont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "GRATULÁKOK!!!!";
+            endGame();
+        } else if ((gepipont > jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "VESZTETTEL :((((";
+            endGame();
+        } else if ((gepipont == jatekospont) && (jatekospont + gepipont == 5)) {
+            vegeredmeny.textContent = "DÖNTETTLEN!!!!!";
+            endGame();
+        }
+    });
+
+
 }
 
 game();
